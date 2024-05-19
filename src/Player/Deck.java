@@ -7,11 +7,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
+    private final boolean debug = true;
     private ArrayList<PlayingCard> cards;
 
     public Deck() {
         this.cards = new ArrayList<PlayingCard>();
-        initializeDeck();
+        if (debug) {
+            DEBUGfillDeckWithCard(0, 1);
+        } else {
+            initializeDeck();
+        }
+    }
+
+    public void DEBUGfillDeckWithCard(int suit, int value) {
+        while (cards.size() < 52) {
+            cards.add(new PlayingCard(suit, value));
+        }
     }
 
     private void initializeDeck() {
